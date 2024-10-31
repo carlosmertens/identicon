@@ -17,7 +17,10 @@ defmodule Identicon do
   Function to hash the string provided by users.
   """
   def hash_input(input) do
-    :crypto.hash(:md5, input)
-    |> :binary.bin_to_list()
+    hex =
+      :crypto.hash(:md5, input)
+      |> :binary.bin_to_list()
+
+    %Identicon.Image{hex: hex}
   end
 end
