@@ -1,18 +1,23 @@
 defmodule Identicon do
   @moduledoc """
-  Documentation for `Identicon`.
+  Takes a name and convert it into a identicon image.
   """
 
   @doc """
-  Hello world.
+    Main function to pipeline the helper functions.
 
-  ## Examples
-
-      iex> Identicon.hello()
-      :world
 
   """
-  def hello do
-    :world
+  def main(input) do
+    input
+    |> hash_input
+  end
+
+  @doc """
+  Function to hash the string provided by users.
+  """
+  def hash_input(input) do
+    :crypto.hash(:md5, input)
+    |> :binary.bin_to_list()
   end
 end
