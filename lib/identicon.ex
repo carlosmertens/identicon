@@ -5,14 +5,13 @@ defmodule Identicon do
 
   @doc """
     Main function to pipeline the helper functions.
-
-
   """
   def main(input) do
     input
     |> hash_input
     |> pick_color
     |> build_grid
+    |> filter_odd_square
   end
 
   @doc """
@@ -53,5 +52,14 @@ defmodule Identicon do
   def mirrow_row(row) do
     [first, second | _tail] = row
     row ++ [second, first]
+  end
+
+  @doc """
+  Function to filter the odd values on the grid to be coloured in order to give shape to the identicon.
+  """
+  def filter_odd_square(%Identicon.Image{grid: grid} = image) do
+    grid = Enum.filter(grid, fn {code, _index} -> rem(code, 2) == 0 end)
+
+    %Identicon.Image{image | grid: grid}
   end
 end
