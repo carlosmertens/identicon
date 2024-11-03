@@ -8,7 +8,7 @@ defmodule Identicon do
   """
 
   @doc """
-    Main function to pipeline the helper functions.
+    Main function to pipeline functions in order to build the identicon.
   """
   def main(input) do
     input
@@ -22,7 +22,7 @@ defmodule Identicon do
   end
 
   @doc """
-  Function to hash the string provided by users.
+  Function to hash the string provided by users that eventually will become an identicon.
   """
   def hash_input(input) do
     hex =
